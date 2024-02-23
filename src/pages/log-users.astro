@@ -1,0 +1,8 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import PageLogsUsers from '../components/LogsUsers';
+---
+
+<DefaultLayout title="EDDG" subTitle="Manajemen Role User">
+  <PageLogsUsers client:only="react" />
+</DefaultLayout>

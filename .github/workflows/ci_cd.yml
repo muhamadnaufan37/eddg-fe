@@ -1,0 +1,35 @@
+name: CI SIPANDU Frontend
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  # Label of the container job
+  test-in-container:
+    # Containers must run in Linux based operating systems
+    runs-on: self-hosted
+    # Docker Hub image that `container-job` executes in
+    container: node:lts-buster # node 18
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Copy environment
+        run: |
+          cp .env.example .env
+          cat .env
+
+      - run: unset CI
+      - run: yarn install
+      - run: yarn build
+      - run: HOST=0.0.0.0 PORT=3000 node ./dist/server/entry.mjs &
+      - run: sleep 1
+      - run: curl http://localhost:3000
+      - run: npm install --global vercel@latest
+      - run: vercel pull --yes --environment=preview --token=k6Dq1VjpT7gc6gLXoA38aRlp
+      - run: vercel build --token=k6Dq1VjpT7gc6gLXoA38aRlp
+      - run: vercel deploy --prebuilt --token=k6Dq1VjpT7gc6gLXoA38aRlp

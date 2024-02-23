@@ -1,0 +1,8 @@
+---
+import AuthLayout from '../layouts/AuthLayout.astro';
+import PageLogin from '../components/auth/FormLogin';
+---
+
+<AuthLayout title="EDDG" subTitle="Login">
+  <PageLogin client:only="react" />
+</AuthLayout>

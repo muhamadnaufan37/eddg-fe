@@ -1,0 +1,8 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import PageDataDaerah from '../components/DataDaerah';
+---
+
+<DefaultLayout title="EDDG" subTitle="Manajemen Daerah">
+  <PageDataDaerah client:only="react" />
+</DefaultLayout>

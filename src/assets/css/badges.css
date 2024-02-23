@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+
+.c-pill {
+  align-items: center;
+  align-self: center;
+	font-family: "Open Sans", Arial, Verdana, sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+  display: inline-block;
+  height: 35px;
+  white-space: nowrap;
+  width: 75%;
+  border-radius: 8px;
+  line-height: 1;
+  overflow: hidden;
+  padding: 5px 5px 5px 5px;
+  text-overflow: ellipsis;
+	line-height: 1.25rem;
+  border: 1px solid;
+  word-break: break-word;
+}
+
+
+.c-pill--success {
+  background: linear-gradient(0deg, #E6F6EC, #E6F6EC);
+  border: 1px solid #C3E9D0;
+  color: #069550; }
+
+.c-pill--success:before {
+    background: linear-gradient(0deg, #E6F6EC, #E6F6EC);
+}
+
+.c-pill--warning {
+  background: linear-gradient(0deg, #FFF9E1, #FFF9E1);
+  border: 1px solid #FFCDD2;
+  color: #FFA600; 
+}
+
+.c-pill--warning:before {
+background: linear-gradient(0deg, #FFF9E1, #FFF9E1); 
+}
+
+.c-pill--info {
+  background: linear-gradient(0deg, #E3F2FD, #E3F2FD);
+  border: 1px solid #BBDEFB;
+  color: #1976D2; 
+}
+
+.c-pill--info:before {
+    background: linear-gradient(0deg, #E3F2FD, #E3F2FD); 
+}
+
+.c-pill--danger {
+  background: linear-gradient(0deg, #FFEBEE, #FFEBEE);
+  border: 1px solid #FFCDD2;
+  color: #D32F2F; 
+}
+
+.c-pill--danger:before {
+    background: linear-gradient(0deg, #FFEBEE, #FFEBEE); 
+}
+
+.c-pill--secondary {
+  background: linear-gradient(0deg, #979696, #979696);
+  border: 1px solid #000000;
+  color: #ffffff; 
+}
+
+.c-pill--secondary:before {
+    background: linear-gradient(0deg, #979696, #979696); 
+}
+

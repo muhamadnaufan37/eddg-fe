@@ -1,0 +1,8 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import PageDataKelompok from '../components/DataKelompok';
+---
+
+<DefaultLayout title="EDDG" subTitle="Manajemen Kelompok">
+  <PageDataKelompok client:only="react" />
+</DefaultLayout>

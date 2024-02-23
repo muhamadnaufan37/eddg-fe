@@ -1,0 +1,8 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import PageProfile from '../components/profile';
+---
+
+<DefaultLayout title="EDDG" subTitle="Profile">
+  <PageProfile client:only="react" />
+</DefaultLayout>

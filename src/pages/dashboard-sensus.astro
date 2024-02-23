@@ -1,0 +1,8 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import PageDashboardSensus from '../components/DashboardSensus';
+---
+
+<DefaultLayout title="EDDG" subTitle="Dashboard Data Sensus">
+  <PageDashboardSensus client:only="react" />
+</DefaultLayout>

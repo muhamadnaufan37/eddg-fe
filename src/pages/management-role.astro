@@ -1,0 +1,8 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import PageRole from '../components/Roles';
+---
+
+<DefaultLayout title="EDDG" subTitle="Manajemen Role User">
+  <PageRole client:only="react" />
+</DefaultLayout>

@@ -1,0 +1,8 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import PageDataDesa from '../components/DataDesa';
+---
+
+<DefaultLayout title="EDDG" subTitle="Manajemen Desa">
+  <PageDataDesa client:only="react" />
+</DefaultLayout>

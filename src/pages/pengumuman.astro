@@ -1,0 +1,8 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import PagePengumuman from '../components/Pengumuman';
+---
+
+<DefaultLayout title="EDDG" subTitle="Pengumuman">
+  <PagePengumuman client:only="react" />
+</DefaultLayout>

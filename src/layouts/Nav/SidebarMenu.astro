@@ -1,0 +1,69 @@
+<aside id="sidebar" class="sidebar">
+  <ul class="sidebar-nav" id="sidebar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="/">
+        <div class="d-flex gap-3">
+          <img src="/assets/eddg/beranda-icon.svg" />
+          <span>Beranda</span>
+        </div>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/">
+        <div class="d-flex gap-3">
+          <img src="/assets/eddg/pengumuman-icon.svg" />
+          <span>Pengumuman</span>
+        </div>
+      </a>
+    </li>
+    <!-- End Components Nav -->
+    <div id="menuContainer"></div>
+  </ul>
+</aside>
+
+<script>
+  import generateSidebarMenu from '../../utils/generateSidebarMenu';
+
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  let menu = generateSidebarMenu(user.role_id);
+
+  // Function to generate the HTML content
+  function generateMenuHtml() {
+    return menu
+      .map(
+        (item, index) => `
+          <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#forms-nav-${index}" data-bs-toggle="collapse" href="#">
+        <div class="d-flex gap-3">
+              <img src="${item.icon}"></img><span>${item.menu}</span>
+        </div>
+        <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="forms-nav-${index}" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+              ${item.subMenu
+                .map(
+                  (subItem) => `
+                    <li>
+                      <a href="${subItem.link}" style="white-space: normal;">
+                        <img src="/assets/eddg/arrow-right.svg"></img>&emsp;<span>${subItem.menu}</span>
+                      </a>
+                    </li>
+                  `
+                )
+                .join('')}
+            </ul>
+          </li>
+        `
+      )
+      .join('');
+  }
+
+  const menuHtml = generateMenuHtml();
+
+  // Insert the generated HTML into a specific element (e.g., with the ID "menuContainer")
+  const menuContainer = document.getElementById('menuContainer');
+  if (menuContainer) {
+    menuContainer.innerHTML = menuHtml;
+  }
+</script>

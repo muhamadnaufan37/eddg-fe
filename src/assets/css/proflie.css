@@ -1,0 +1,43 @@
+.card:hover {
+    box-shadow: none !important;
+}
+
+.card {
+    border: 1px solid #EEEEEE !important;
+    border-radius: 22px !important;
+    padding: 12px !important;
+    box-shadow: none !important;
+    transition: none !important;
+}
+
+.judul-header-pswrd {
+    color: #022B55;
+    font-size: 24px;
+}
+
+.judul-header {
+    color: #022B55;
+    font-size: 24px;
+}
+
+label {
+    color: #616161;
+    font-size: 16px;
+}
+
+.data-user {
+    color: #212121;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.data-role {
+    color: #212121;
+    font-size: 12px;
+}
+
+.img-profile {
+    padding: 10px;
+    width: 62px;
+    height: 62px;
+}

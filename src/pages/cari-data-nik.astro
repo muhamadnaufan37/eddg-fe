@@ -1,0 +1,8 @@
+---
+import AuthLayout from '../layouts/AuthLayout.astro';
+import DataNIK from '../components/DataApiNik';
+---
+
+<AuthLayout title="EDDG" subTitle="Cari Data NIK">
+  <DataNIK client:only="react" />
+</AuthLayout>

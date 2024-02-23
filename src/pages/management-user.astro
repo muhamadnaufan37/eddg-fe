@@ -1,0 +1,8 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import PageUser from '../components/ListUser';
+---
+
+<DefaultLayout title="EDDG" subTitle="Management User">
+  <PageUser client:only="react" />
+</DefaultLayout>

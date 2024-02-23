@@ -1,0 +1,64 @@
+---
+const { title, subTitle } = Astro.props;
+const mergeTitle = `${title} ${subTitle ? '- ' + subTitle : ''}`;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="assets/template/assets/" data-template="vertical-menu-template-free">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>{mergeTitle}</title>
+    <meta name="description" content="Data Sensus DPD PWK" />
+    <meta name="keywords" content="SENSUS" />
+    <meta name="author" content="MEDIA CENTER PURWAKARTA" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:title" content="Data Sensus DPD PWK" />
+    <meta property="og:description" content="Data Sensus DPD PWK" />
+    <meta property="og:locale:alternate" content="id_ID" />
+    <meta property="og:title" content="Elektronik Digital Data Generus" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="EDDG" />
+    <meta property="og:image" content="/assets/eddg/icon-login.svg" />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" type="image/png" href="/assets/eddg/icon-login.svg" />
+    <link href="/assets/eddg/icon-login.svg" rel="icon" />
+    <link href="/assets/eddg/icon-login.svg" />
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@100;200;400&family=Roboto&display=swap" rel="stylesheet" />
+
+    <!-- Vendor CSS Files -->
+    <link href="../assets/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/template/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../assets/template/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="../assets/template/vendor/quill/quill.snow.css" rel="stylesheet" />
+    <link href="../assets/template/vendor/quill/quill.bubble.css" rel="stylesheet" />
+    <link href="../assets/template/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="../assets/template/vendor/simple-datatables/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <slot />
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script is:inline src="../assets/template/vendor/apexcharts/apexcharts.min.js"></script>
+    <script is:inline src="../assets/template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script is:inline src="../assets/template/vendor/chart.js/chart.umd.js"></script>
+    <script is:inline src="../assets/template/vendor/echarts/echarts.min.js"></script>
+    <script is:inline src="../assets/template/vendor/quill/quill.min.js"></script>
+    <script is:inline src="../assets/template/vendor/simple-datatables/simple-datatables.js"></script>
+    <script is:inline src="../assets/template/vendor/tinymce/tinymce.min.js"></script>
+    <script is:inline src="../assets/template/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script is:inline src="../assets/template/js/main.js"></script>
+  </body>
+</html>

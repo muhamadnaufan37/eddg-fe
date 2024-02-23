@@ -1,0 +1,8 @@
+---
+import AuthLayout from '../layouts/AuthLayout.astro';
+import DataSenssus from '../components/DataSensusMumi';
+---
+
+<AuthLayout title="EDDG" subTitle="Cari Data Sensus">
+  <DataSenssus client:only="react" />
+</AuthLayout>

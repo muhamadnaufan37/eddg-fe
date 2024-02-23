@@ -1,0 +1,231 @@
+$primary: #2b9348;
+$yellow: #f9c80e;
+$orange: #f86624;
+$red: #ea3546;
+$purple: #662e9b;
+$blue: #43bccd;
+$default: #d1d5da;
+$defaultBg: #2f363d;
+$dark: #c9d1d9;
+$darkBg: #0d1117;
+
+* {
+	box-sizing: border-box;
+}
+
+.sr-only {
+	visibility: hidden;
+}
+
+.hidden {
+	width: 0;
+	height: 0;
+	visibility: hidden;
+	display: none;
+	overflow: hidden;
+}
+
+// html {
+// 	font-size: 16px;
+// }
+
+// body {
+// 	display: flex;
+// 	padding: 0;
+// 	margin: 0;
+// 	align-items: center;
+// 	flex-direction: column;
+// 	min-height: 100vh;
+// 	font-family: 'Barlow', sans-serif;
+// 	position: relative;
+// 	background-color: lighten($default, 15%);
+// }
+
+.challenge-title {
+	text-align: center;
+	padding: 0;
+	margin: 1rem 0 0.5rem;
+	color: darken($default, 50%);
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+.challenge-subtitle {
+	text-align: center;
+	margin: 0;
+	font-size: 1.125rem;
+	font-weight: 400;
+	color: darken($default, 10%);
+}
+
+.challenge-part-of {
+	text-align: center;
+	margin: 1rem 0 0;
+	font-size: 0.875rem;
+	color: darken($default, 10%);
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+	a,
+	a:visited {
+		color: darken($default, 10%);
+		text-decoration-style: wavy;
+		&:hover,
+		&:active {
+			color: lighten(darken($default, 10%), 10%);
+		}
+	}
+}
+
+.container {
+	margin: 1.5rem;
+	padding: 2rem;
+	width: 1000px;
+	min-height: 300px;
+	border: 1px solid $default;
+	border-radius: 1rem;
+}
+
+.sbs-title {
+	color: darken($default, 5%);
+	text-transform: uppercase;
+	font-size: 0.625rem;
+	margin: 0 0 1rem;
+	padding: 1rem 0;
+	&:first-of-type {
+		padding-top: 0;
+		margin-top: 0;
+	}
+}
+
+hr {
+	border-top: 1px solid lighten($default, 10%);
+	margin: 3rem 0 2rem;
+}
+
+.badge-container {
+	display: flex;
+	flex-wrap: wrap;
+	.badge {
+		margin: 0.25rem 0;
+	}
+	.badge:not(:last-of-type) {
+		margin-right: 1rem;
+	}
+}
+
+.badge {
+	display: inline-block;
+	padding: 0.5rem 0.75rem;
+	font-size: 0.75rem;
+	font-weight: bold;
+	border-radius: 0.5rem;
+	border: 1px solid transparent;
+	&.badge-default {
+		background-color: lighten($default, 10%);
+		color: darken($default, 50%);
+		border-color: darken($default, 50%);
+	}
+	&.badge-primary {
+		background-color: lighten($primary, 50%);
+		color: $primary;
+		border-color: $primary;
+	}
+	&.badge-yellow {
+		background-color: lighten($yellow, 40%);
+		color: darken($yellow, 10%);
+		border-color: darken($yellow, 5%);
+	}
+	&.badge-orange {
+		background-color: lighten($orange, 40%);
+		color: $orange;
+		border-color: $orange;
+	}
+	&.badge-red {
+		background-color: lighten($red, 40%);
+		color: $red;
+		border-color: $red;
+	}
+	&.badge-purple {
+		background-color: lighten($purple, 50%);
+		color: $purple;
+		border-color: $purple;
+	}
+	&.badge-blue {
+		background-color: lighten($blue, 40%);
+		color: $blue;
+		border-color: $blue;
+	}
+	&.badge-round {
+		border-radius: 1rem;
+	}
+	&.badge-round.badge-tagged {
+		&::before {
+			left: 0.875rem;
+		}
+	}
+	&.badge-tagged {
+		padding-left: 1.5rem;
+		position: relative;
+		&::before {
+			content: "\f292";
+			font-family: "Font Awesome 5 Free";
+			position: absolute;
+			top: 50%;
+			left: 0.75rem;
+			transform: translate(-50%, -50%);
+		}
+	}
+	&.badge-closable {
+		padding-right: 1.5rem;
+		position: relative;
+		.close {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 100%;
+			width: 1.5rem;
+			cursor: pointer;
+			opacity: 0.4;
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+	&.badge-add {
+		padding-left: 1.5rem;
+		position: relative;
+		color: darken($default, 10%);
+		min-width: 75px;
+		&:hover,
+		&:focus {
+			outline: 0;
+			border: 1px dotted darken($default, 10%);
+			color: darken($default, 50%);
+		}
+		&:focus {
+			&::after {
+				display: none;
+			}
+		}
+		&::before {
+			content: "\f067";
+			font-family: "Font Awesome 5 Free";
+			position: absolute;
+			top: 50%;
+			left: 0.75rem;
+			transform: translate(-50%, -50%);
+		}
+		&::after {
+			pointer-events: none;
+			content: attr(data-placeholder);
+			position: absolute;
+			top: 50%;
+			left: 1.5rem;
+			transform: translateY(-50%);
+		}
+	}
+}

@@ -1,0 +1,10 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import Beranda from '../components/Beranda.jsx';
+---
+
+<DefaultLayout title="EDDG" subTitle="Beranda">
+  <main>
+    <Beranda client:only="react" />
+  </main>
+</DefaultLayout>
