@@ -306,9 +306,24 @@ export default function Pengumuman() {
       </div>
     );
 
+    console.log(dataNew.value?.role_id);
+
     return (
       <>
-        <Dropdown value={selectedOption.value} options={options} optionLabel="label" itemTemplate={optionTemplate} placeholder="Pilih" />
+        {dataNew.value?.role_id === 1 && <Dropdown value={selectedOption.value} options={options} optionLabel="label" itemTemplate={optionTemplate} placeholder="Pilih" />}
+        {dataNew.value?.role_id === 2 && (
+          <Button
+            label="Detail"
+            severity="info"
+            outlined
+            size="small"
+            onClick={() => {
+              dataUserId.value = data.id;
+              viewSide.value = 'detail';
+              DetailDataFetch();
+            }}
+          />
+        )}
       </>
     );
   };
@@ -415,21 +430,29 @@ export default function Pengumuman() {
                 <div className="col-12 sm:col-12 lg:col-3">
                   <div className="d-grid gap-2">
                     <div className="row">
-                      <div className="col-12 lg:col-6">
-                        <Button className="w-100" label="Reset" icon="pi pi-replay" onClick={handleClear} severity="danger" size="small" />
-                      </div>
-                      <div className="col-12 lg:col-6">
-                        <Button
-                          className="w-100"
-                          label="Tambah"
-                          icon="pi pi-plus"
-                          onClick={() => {
-                            visibleRight1.value = true;
-                          }}
-                          severity="info"
-                          size="small"
-                        />
-                      </div>
+                      {dataNew.value?.role_id === 1 ? (
+                        <>
+                          <div className="col-12 lg:col-6">
+                            <Button className="w-100" label="Reset" icon="pi pi-replay" onClick={handleClear} severity="danger" size="small" />
+                          </div>
+                          <div className="col-12 lg:col-6">
+                            <Button
+                              className="w-100"
+                              label="Tambah"
+                              icon="pi pi-plus"
+                              onClick={() => {
+                                visibleRight1.value = true;
+                              }}
+                              severity="info"
+                              size="small"
+                            />
+                          </div>
+                        </>
+                      ) : (
+                        <div className="col-12 lg:col-12">
+                          <Button className="w-100" label="Reset" icon="pi pi-replay" onClick={handleClear} severity="danger" size="small" />
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
