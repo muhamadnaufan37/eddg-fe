@@ -132,7 +132,7 @@ export default function Profile() {
                                 {showForm.value && (
                                   <>
                                     <div className="p-1 m-1">
-                                      <Field as={InputText} keyfilter="int" id="nama_lengkap" name="nama_lengkap" className={errors.nama_lengkap && touched.nama_lengkap ? 'p-invalid' : ''} />
+                                      <Field as={InputText} id="nama_lengkap" name="nama_lengkap" className={errors.nama_lengkap && touched.nama_lengkap ? 'p-invalid' : ''} />
                                     </div>
                                     <ErrorMessage name="nama_lengkap" component="div" className="p-error" />
                                   </>
