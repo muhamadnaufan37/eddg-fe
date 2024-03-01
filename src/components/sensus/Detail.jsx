@@ -6,11 +6,13 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { Button } from 'primereact/button';
 import { Calendar } from 'primereact/calendar';
 import { Dialog } from 'primereact/dialog';
+import { Image } from 'primereact/image';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 const Detail = ({ detailData, visible, onHide, fetchDataDaerah, fetchDataDesa, fetchDataKelompok }) => {
   const toastRef = useRef(null);
   const [date, setDate] = useState(new Date());
+  const icon = <i className="pi pi-search"></i>;
 
   const initialValues = {
     id: detailData?.id,
@@ -256,6 +258,14 @@ const Detail = ({ detailData, visible, onHide, fetchDataDaerah, fetchDataDesa, f
                     <Field as={InputText} id="user_petugas" name="user_petugas" className={errors.user_petugas && touched.user_petugas ? 'p-invalid' : ''} disabled />
                   </div>
                   <ErrorMessage name="user_petugas" component="div" className="p-error" />
+                </div>
+
+                <div className="col-md-12 mb-3">
+                  <label>Foto Peserta</label>
+                  <div className="row p-1 m-1">
+                    {/* {detailData?.image_url && <img src={detailData?.image_url} alt="Sensus Image" />} */}
+                    {detailData?.image_url && <Image src={detailData?.image_url} indicatorIcon={icon} alt="Image" preview width="250" />}
+                  </div>
                 </div>
 
                 <div className="d-grid gap-2 d-md-flex justify-content-md-end">
