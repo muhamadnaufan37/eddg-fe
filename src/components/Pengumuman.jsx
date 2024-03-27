@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { signal } from '@preact/signals-react';
 import { fetchClient } from '../utils/axios';
+import { deleteUserInfo } from '../store';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
@@ -20,7 +21,6 @@ import Tambah from './pengumuman/Tambah';
 import Detail from './pengumuman/Detail';
 import Edit from './pengumuman/Edit';
 
-const error = signal(null);
 const data = signal([]);
 const loading = signal(true);
 const globalFilter = signal('');
@@ -59,9 +59,39 @@ export default function Pengumuman() {
       data.value = response.data.data_boardcast.data;
       totalRecords.value = response.data.data_boardcast.total;
       loading.value = false;
-    } catch (err) {
-      error.value = err;
-      loading.value = false;
+    } catch (error) {
+      if (error.response) {
+        if (error.response.status === 401) {
+          // Penanganan status HTTP 401 (Unauthorized)
+          try {
+            deleteUserInfo();
+            window.location.href = '/';
+          } catch (logoutError) {
+            toastRef.current.show({
+              severity: 'error',
+              summary: 'Error',
+              detail: 'Oops.. ada kesalahan sistem, silahkan coba lagi.',
+              life: 3000,
+            });
+          }
+        } else if (error.response.status === 500) {
+          // Penanganan status HTTP 500 (Internal Server Error)
+          toastRef.current.show({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Oops.. ada kesalahan sistem, silahkan coba secara berkala.',
+            life: 3000,
+          });
+        } else {
+          // Penanganan status HTTP lainnya
+          toastRef.current.show({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.message,
+            life: 3000,
+          });
+        }
+      }
     }
   };
 
@@ -215,8 +245,39 @@ export default function Pengumuman() {
       } else {
         visibleRight2.value = true;
       }
-    } catch (err) {
-      error.value = err;
+    } catch (error) {
+      if (error.response) {
+        if (error.response.status === 401) {
+          // Penanganan status HTTP 401 (Unauthorized)
+          try {
+            deleteUserInfo();
+            window.location.href = '/';
+          } catch (logoutError) {
+            toastRef.current.show({
+              severity: 'error',
+              summary: 'Error',
+              detail: 'Oops.. ada kesalahan sistem, silahkan coba lagi.',
+              life: 3000,
+            });
+          }
+        } else if (error.response.status === 500) {
+          // Penanganan status HTTP 500 (Internal Server Error)
+          toastRef.current.show({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Oops.. ada kesalahan sistem, silahkan coba secara berkala.',
+            life: 3000,
+          });
+        } else {
+          // Penanganan status HTTP lainnya
+          toastRef.current.show({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.message,
+            life: 3000,
+          });
+        }
+      }
     }
   };
 
@@ -250,20 +311,37 @@ export default function Pengumuman() {
         });
       }
     } catch (error) {
-      if (error.response && error.response.status === 500) {
-        toastRef.current.show({
-          severity: 'error',
-          summary: 'Error',
-          detail: 'Oops.. ada kesalahan sistem, silahkan coba secara berkala.',
-          life: 3000,
-        });
-      } else {
-        toastRef.current.show({
-          severity: 'error',
-          summary: 'Error',
-          detail: error.message,
-          life: 3000,
-        });
+      if (error.response) {
+        if (error.response.status === 401) {
+          // Penanganan status HTTP 401 (Unauthorized)
+          try {
+            deleteUserInfo();
+            window.location.href = '/';
+          } catch (logoutError) {
+            toastRef.current.show({
+              severity: 'error',
+              summary: 'Error',
+              detail: 'Oops.. ada kesalahan sistem, silahkan coba lagi.',
+              life: 3000,
+            });
+          }
+        } else if (error.response.status === 500) {
+          // Penanganan status HTTP 500 (Internal Server Error)
+          toastRef.current.show({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Oops.. ada kesalahan sistem, silahkan coba secara berkala.',
+            life: 3000,
+          });
+        } else {
+          // Penanganan status HTTP lainnya
+          toastRef.current.show({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.message,
+            life: 3000,
+          });
+        }
       }
     }
   };
@@ -306,23 +384,24 @@ export default function Pengumuman() {
       </div>
     );
 
-    console.log(dataNew.value?.role_id);
-
     return (
       <>
-        {dataNew.value?.role_id === 1 && <Dropdown value={selectedOption.value} options={options} optionLabel="label" itemTemplate={optionTemplate} placeholder="Pilih" />}
-        {dataNew.value?.role_id === 2 && (
-          <Button
-            label="Detail"
-            severity="info"
-            outlined
-            size="small"
-            onClick={() => {
-              dataUserId.value = data.id;
-              viewSide.value = 'detail';
-              DetailDataFetch();
-            }}
-          />
+        {dataNew.value?.role_id === 1 ? (
+          <Dropdown value={selectedOption.value} options={options} optionLabel="label" itemTemplate={optionTemplate} placeholder="Pilih" />
+        ) : (
+          <>
+            <Button
+              label="Detail"
+              severity="info"
+              outlined
+              size="small"
+              onClick={() => {
+                dataUserId.value = data.id;
+                viewSide.value = 'detail';
+                DetailDataFetch();
+              }}
+            />
+          </>
         )}
       </>
     );
@@ -384,7 +463,6 @@ export default function Pengumuman() {
         <div className="card-body">
           <div className="fw-semibold fs-3 mb-3">Pengumuman</div>
           <Toast ref={toastRef} />
-          {error.value && <div className="text-danger mb-3">{error.value.message}</div>}
           <div className="card card-toolbar-filter mb-4">
             <div className="card-body">
               <div className="row align-items-center">

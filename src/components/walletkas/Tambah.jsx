@@ -175,7 +175,9 @@ const Tambah = ({ totalNominalKas, balikanLogin, fetchData, visible, onHide }) =
                     <InputNumber locale="id-ID" id="jumlah" name="jumlah" className={errors.jumlah && touched.jumlah ? 'p-invalid' : ''} value={values.jumlah} placeholder="Contoh: 500.000" onValueChange={(e) => setFieldValue('jumlah', e.value)} />
                   </div>
                 </div>
-                <span>Total Pemasukan: {new Intl.NumberFormat('id-ID').format(cekDataTotalKas)}</span>
+                <span>
+                  Total Pemasukan: <b>Rp. {new Intl.NumberFormat('id-ID').format(cekDataTotalKas)}</b>
+                </span>
                 {values.jenis_transaksi === 'PENGELUARAN' && values.jumlah > cekDataTotalKas && <div className="p-error">Jumlah Pengeluaran tidak boleh melebihi total pemasukan</div>}
                 <ErrorMessage name="jumlah" component="div" className="p-error" />
               </div>

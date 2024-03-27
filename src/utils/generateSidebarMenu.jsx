@@ -45,6 +45,16 @@ const superadminMenu = [
       },
     ],
   },
+  {
+    menu: 'Keuangan',
+    icon: '/assets/eddg/bendahara-icon.svg',
+    subMenu: [
+      {
+        menu: 'Data Kas Bendahara',
+        link: '/data-kas-bendahara',
+      },
+    ],
+  },
 ];
 
 const ptgsMenu = [
@@ -55,6 +65,19 @@ const ptgsMenu = [
       {
         menu: 'Data Digital',
         link: '/digital-data-generus',
+      },
+    ],
+  },
+];
+
+const bendaharaMenu = [
+  {
+    menu: 'Keuangan',
+    icon: '/assets/eddg/bendahara-icon.svg',
+    subMenu: [
+      {
+        menu: 'Data Kas Bendahara',
+        link: '/data-kas-bendahara',
       },
     ],
   },
@@ -175,8 +198,8 @@ function generateSidebarMenu(role) {
       return superadminMenu;
     case 2:
       return ptgsMenu;
-    // case 3:
-    //   return mahasiswaMenu;
+    case 3:
+      return bendaharaMenu;
     // case 4:
     //   return siswaMenu;
     default:
