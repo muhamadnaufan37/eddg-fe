@@ -27,6 +27,10 @@ const Beranda = () => {
     window.location.href = '/pengumuman';
   };
 
+  const dataKasWallet = () => {
+    window.location.href = '/dashboard-bendahara';
+  };
+
   const storedUserData = JSON.parse(localStorage.getItem('user'));
   if (storedUserData) {
     dataNew.value = storedUserData;
@@ -71,20 +75,26 @@ const Beranda = () => {
         ) : (
           ''
         )}
-        <div className="col-xl-3 col-lg-12 col-md-12 col-sm-12 mb-3">
-          <div className="box d-flex justify-content-between flex-column">
-            <div className="text-center">
-              <img src="../assets/eddg/logo-dashboard-2.svg" className="img-fluid mx-auto d-block mb-3" alt="logo-dashboard-2" />
+        {dataNew.value?.role_id === 1 || dataNew.value?.role_id === 2 ? (
+          <>
+            <div className="col-xl-3 col-lg-12 col-md-12 col-sm-12 mb-3">
+              <div className="box d-flex justify-content-between flex-column">
+                <div className="text-center">
+                  <img src="../assets/eddg/logo-dashboard-2.svg" className="img-fluid mx-auto d-block mb-3" alt="logo-dashboard-2" />
+                </div>
+                <div className="p-1">
+                  <p className="fw-bold fs-3">Dashboard</p>
+                  <p className="fs-6">MMenu untuk melihat informasi data sensus muda / mudi.</p>
+                </div>
+                <div className="flex flex-wrap justify-content-center gap-2">
+                  <Button label="Mulai" severity="secondary" onClick={dataDashboard} text size="small" />
+                </div>
+              </div>
             </div>
-            <div className="p-1">
-              <p className="fw-bold fs-3">Dashboard</p>
-              <p className="fs-6">MMenu untuk melihat informasi data sensus muda / mudi.</p>
-            </div>
-            <div className="flex flex-wrap justify-content-center gap-2">
-              <Button label="Mulai" severity="secondary" onClick={dataDashboard} text size="small" />
-            </div>
-          </div>
-        </div>
+          </>
+        ) : (
+          ''
+        )}
         {dataNew.value?.role_id === 1 ? (
           <>
             <div className="col-xl-3 col-lg-12 col-md-12 col-sm-12 mb-3">
@@ -105,20 +115,46 @@ const Beranda = () => {
         ) : (
           ''
         )}
-        <div className="col-xl-3 col-lg-12 col-md-12 col-sm-12 mb-3">
-          <div className="box d-flex justify-content-between flex-column">
-            <div className="text-center">
-              <img src="../assets/eddg/logo-dashboard-4.svg" className="img-fluid mx-auto d-block mb-3" alt="logo-dashboard-4" />
+        {dataNew.value?.role_id === 1 || dataNew.value?.role_id === 2 ? (
+          <>
+            <div className="col-xl-3 col-lg-12 col-md-12 col-sm-12 mb-3">
+              <div className="box d-flex justify-content-between flex-column">
+                <div className="text-center">
+                  <img src="../assets/eddg/logo-dashboard-4.svg" className="img-fluid mx-auto d-block mb-3" alt="logo-dashboard-4" />
+                </div>
+                <div className="p-1">
+                  <p className="fw-bold fs-3">Data Generus Management</p>
+                  <p className="fs-6">Menu untuk mengatur data sensus generus</p>
+                </div>
+                <div className="flex flex-wrap justify-content-center gap-2">
+                  <Button label="Mulai" severity="secondary" onClick={dataSensus} text size="small" />
+                </div>
+              </div>
             </div>
-            <div className="p-1">
-              <p className="fw-bold fs-3">Data Generus Management</p>
-              <p className="fs-6">Menu untuk mengatur data sensus generus</p>
+          </>
+        ) : (
+          ''
+        )}
+        {dataNew.value?.role_id === 1 || dataNew.value?.role_id === 3 ? (
+          <>
+            <div className="col-xl-3 col-lg-12 col-md-12 col-sm-12 mb-3">
+              <div className="box d-flex justify-content-between flex-column">
+                <div className="text-center">
+                  <img src="../assets/eddg/logo-dashboard-6.svg" className="img-fluid mx-auto d-block mb-3" alt="logo-dashboard-6" />
+                </div>
+                <div className="p-1">
+                  <p className="fw-bold fs-3">Dashboard Data kas</p>
+                  <p className="fs-6">Menu untuk mengatur data keuangan Kelompok / Desa / Daerah</p>
+                </div>
+                <div className="flex flex-wrap justify-content-center gap-2">
+                  <Button label="Mulai" severity="secondary" onClick={dataKasWallet} text size="small" />
+                </div>
+              </div>
             </div>
-            <div className="flex flex-wrap justify-content-center gap-2">
-              <Button label="Mulai" severity="secondary" onClick={dataSensus} text size="small" />
-            </div>
-          </div>
-        </div>
+          </>
+        ) : (
+          ''
+        )}
       </div>
     </>
   );
